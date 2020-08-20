@@ -1,5 +1,4 @@
-<?php require(ROOT .'includes/config.php');
-     require(ROOT .'includes/functions.php'); ?>
+<?php require('../includes/config.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,12 +18,12 @@
         <form action="<?php echo ROOT; ?>includes/functions.php" method="post">
             <label>Page title</label><br><input type="text" name="pageTitle" required><br>
             <label>Content</label><br><textarea name="pageContent"></textarea><br>
-            <button type="submit">Create</button>
+            <button type="submit" name="create_p">Create</button>
         </form>
     </main>
     <?php
-        require(ROOT .'includes/footer.php');
-        mysqli_close($conn);
+        require('../includes/footer.php');
+        mysqli_close($conn_db);
     ?>
 </body>
 </html>

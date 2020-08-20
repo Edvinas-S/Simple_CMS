@@ -1,5 +1,3 @@
-<?php require('config.php'); ?>
-
 <footer class="footer">
         <img src="<?php echo ROOT ?>img/it_works.png" alt="it works picture">
         This is for education. 

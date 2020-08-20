@@ -1,5 +1,4 @@
-<?php require(ROOT .'includes/config.php');
-     require(ROOT .'includes/functions.php'); ?>
+<?php require('../includes/config.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple CMS (Login)</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="<?php echo ROOT; ?>css/style.css">
 </head>
 <body class="logBody">
     <div class="login">

@@ -1,5 +1,4 @@
-<?php require('../includes/config.php');
-     require(ROOT .'includes/functions.php'); ?>
+<?php require('../includes/config.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,14 +24,14 @@
                 <th>Actions</th>
             </tr>
             <?php
-                $result = mysqli_query($conn, 'SELECT pageID, pageTitle FROM pages;');
+                $result = mysqli_query($conn_db, 'SELECT pageID, pageTitle FROM pages;');
                 if (mysqli_num_rows($result) >= 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>
                                 <td>".$row['pageTitle']."</td>
                                 <td>
                                     <form action='../includes/functions.php' method='post'><input type='submit' name='delete_p' value='Delete'><input type='hidden' name='page_id' value='".$row['pageID']."'></form>
-                                    <form action='../admin/editPage.php' method='post'><input type='submit' name='edit_p' value='Edit'><input type='hidden' name='page_id' value='".$row['pageID']."'></form>
+                                    <form action='editPage.php' method='post'><input type='submit' name='edit_p' value='Edit'><input type='hidden' name='page_id' value='".$row['pageID']."'></form>
                                 </td>
                             </tr>";
                     }
@@ -45,8 +44,8 @@
     </main> <!-- END MAIN CONTENT -->
     
     <?php
-        require(ROOT .'includes/footer.php');
-        mysqli_close($conn); 
+        require('../includes/footer.php');
+        mysqli_close($conn_db);
     ?>
 </body>
 </html>
