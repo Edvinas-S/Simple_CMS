@@ -8,12 +8,12 @@ $dbname = "simple_cms_db";
 $conn_db = mysqli_connect($servername, $username, $password, $dbname);
 
     // logout logic
-    if(isset($_GET['logout'])){
-        logout();
-        header('Location: ' . ADMIN . 'login.php');
-    }
     function logout(){
         
+    }
+    if(isset($_GET['logout'])){
+        logout();
+        header('Location: http://localhost/simple_cms/admin/login.php');
     }
 
     // add page logic
@@ -30,4 +30,30 @@ $conn_db = mysqli_connect($servername, $username, $password, $dbname);
         header('Location: http://localhost/simple_cms/admin/');
     }
     
+    // delete page logic
+    function deletePage() {
+        global $conn_db;
+        $pageID = $_POST['page_id'];
+        $sql = "DELETE FROM pages WHERE `pageID`=$pageID;";
+        mysqli_query($conn_db, $sql);
+    }
+    if(isset($_POST['delete_p'])) {
+        deletePage();
+        header('Location: http://localhost/simple_cms/admin/');
+    }
+
+    // edit page logic
+    function editPage() {
+        global $conn_db;
+        $pageID = $_POST['page_id'];
+        $title = $_POST['pageTitle'];
+        $content = $_POST['pageContent'];
+        $sql = "UPDATE pages SET `pageTitle`='$title', `pageContent`='$content' 
+                WHERE `pageID`=$pageID;";
+        mysqli_query($conn_db, $sql);
+    }
+    if(isset($_POST['edited_p'])) {
+        editPage();
+        header('Location: http://localhost/simple_cms/admin/');
+    }
 ?>

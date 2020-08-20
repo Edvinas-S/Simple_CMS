@@ -16,7 +16,7 @@
     <main class="main">
         <h2>Add page</h2>
         <form action="<?php echo ROOT; ?>includes/functions.php" method="post">
-            <label>Page title</label><br><input type="text" name="pageTitle" required><br>
+            <label>Page title</label><br><input type="text" name="pageTitle" required maxlength="15"><br>
             <label>Content</label><br><textarea name="pageContent"></textarea><br>
             <button type="submit" name="create_p">Create</button>
         </form>
