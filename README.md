@@ -5,7 +5,7 @@
 
 ### Features:
 - preview site pages;
-- login as `admin` (name: admin, pass: admin);
+- login as `admin` (name: admin, pass: admin) to "ROOT/Simple_CMS/admin";
 - delete, edit page content.
 
 ### Installation:

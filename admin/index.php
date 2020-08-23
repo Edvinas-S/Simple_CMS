@@ -1,4 +1,6 @@
-<?php require('../includes/config.php');?>
+<?php require_once('../includes/config.php');?>
+
+<?php login_required() ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,11 @@
 <?php
 
-session_start();
+ob_start();
+
+// Set sessions
+if(!isset($_SESSION)) {
+    session_start();
+}
 
 //connect to database
 $servername = "localhost";
@@ -10,7 +15,7 @@ $dbname = "simple_cms_db";
 
 $conn_db = mysqli_connect($servername, $username, $password, $dbname);
 if(!$conn_db){
-    die( "Sorry! There seems to be a problem connecting to our database.");
+    die( "Sorry! Database connection not established.");
 }
 
 // define site path

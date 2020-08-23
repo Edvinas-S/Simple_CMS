@@ -7,13 +7,54 @@ $dbname = "simple_cms_db";
 
 $conn_db = mysqli_connect($servername, $username, $password, $dbname);
 
+    // login logic
+    function login($conn_db, $username, $password) {
+        $username = strip_tags(mysqli_real_escape_string($conn_db, $username));
+        $password = strip_tags(mysqli_real_escape_string($conn_db, $password));
+
+        $hashed_password = md5($password.$username);
+
+        // check if the user name and password combination exist in database
+		$sql = "SELECT * FROM users WHERE username = '$username' AND password = '$hashed_password'";
+        $result = mysqli_query($conn_db, $sql);
+        
+        if (mysqli_num_rows($result) == 1) {
+			// the username and password match,
+			// set the session
+            $_SESSION['loggedin'] = true;
+						
+			// direct to admin
+			header('Location:'. ADMIN);
+			exit();
+		}
+    }
+
+    // Authentication
+	function logged_in() {
+		if($_SESSION['loggedin'] == true) {
+			return true;
+		} else {
+			return false;
+		}	
+	}
+
+	function login_required() {
+		if(logged_in()) {	
+			return true;
+		} else {
+			header('Location: '. ADMIN .'login.php');
+			exit();
+		}	
+	}
+
     // logout logic
     function logout(){
-        
+        unset($_SESSION['loggedin']);
+		header('Location: ' . ADMIN . 'login.php');
+		exit();
     }
     if(isset($_GET['logout'])){
         logout();
-        header('Location: http://localhost/simple_cms/admin/login.php');
     }
 
     // add page logic
